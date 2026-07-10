@@ -13,7 +13,9 @@ interface ImportProgressProps {
 }
 
 export function ImportProgress({ job, progress, isImporting }: ImportProgressProps) {
+   console.log("JOB =", job);
   if (!isImporting && !job) return null;
+
 
   const isComplete = job?.status === "completed";
   const isFailed = job?.status === "failed";

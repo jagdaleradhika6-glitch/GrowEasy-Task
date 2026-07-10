@@ -1,39 +1,41 @@
 import { z } from "zod";
 
 export const CRM_FIELDS = [
-  "firstName",
-  "lastName",
+  "created_at",
+  "name",
   "email",
-  "phone",
+  "country_code",
+  "mobile_without_country_code",
   "company",
-  "title",
-  "website",
-  "address",
   "city",
   "state",
   "country",
-  "postalCode",
-  "tags",
-  "notes",
+  "lead_owner",
+  "crm_status",
+  "crm_note",
+  "data_source",
+  "possession_time",
+  "description",
 ] as const;
 
 export type CrmField = (typeof CRM_FIELDS)[number];
 
 export const contactSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().optional(),
+  name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
+  country_code: z.string().optional(),
+  mobile_without_country_code: z.string().optional(),
   company: z.string().optional(),
-  title: z.string().optional(),
-  website: z.string().url("Invalid URL").optional().or(z.literal("")),
-  address: z.string().optional(),
   city: z.string().optional(),
   state: z.string().optional(),
   country: z.string().optional(),
-  postalCode: z.string().optional(),
-  tags: z.array(z.string()).optional(),
-  notes: z.string().optional(),
+  lead_owner: z.string().optional(),
+  crm_status: z.string().optional(),
+  crm_note: z.string().optional(),
+  created_at: z.string().optional(),
+  data_source: z.string().optional(),
+  possession_time: z.string().optional(),
+  description: z.string().optional(),
 });
 
 export type Contact = z.infer<typeof contactSchema>;

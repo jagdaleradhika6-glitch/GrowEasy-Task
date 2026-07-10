@@ -14,16 +14,17 @@ export function useImportJob() {
 
   const mutation = useOptimisticMutation<ImportJob, ImportRequest>(
     async (request) => {
-      const submitted = await submitImport(request);
-      setJob(submitted);
-      return pollImportJob(submitted.id, (updated) => {
-        setJob(updated);
-        setProgress(
-          updated.totalRows > 0
-            ? (updated.processedRows / updated.totalRows) * 100
-            : 0,
-        );
-      });
+     const submitted = await submitImport(request);
+
+setJob(submitted);
+
+const updated = await pollImportJob(submitted.id);
+
+setJob(updated);
+
+setProgress(100);
+
+return updated;
     },
     {
       queryKey: IMPORT_QUERY_KEY,

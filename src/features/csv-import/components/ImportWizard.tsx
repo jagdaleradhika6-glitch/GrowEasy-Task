@@ -250,13 +250,7 @@ useEffect(() => {
                 <ImportProgress job={job} progress={progress} isImporting={isImporting} />
               )}
 
-              {importError && (
-                <FeatureErrorFallback
-                  title="Import failed"
-                  description={importError}
-                  onRetry={() => void handleImport()}
-                />
-              )}
+             
 
               {step === "preview" && (
                 <div className="flex justify-between">
