@@ -65,7 +65,7 @@ https://github.com/jagdaleradhika6-glitch/GrowEasy-Task
 
 **👩‍💻 Author**
 
-**Radhika Jagdale**
+*Radhika Jagdale*
 
 GitHub:
 https://github.com/jagdaleradhika6-glitch
