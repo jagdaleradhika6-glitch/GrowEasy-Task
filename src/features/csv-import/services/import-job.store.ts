@@ -13,12 +13,7 @@ function applyMapping(row: Record<string, string>, mappings: ColumnMapping[]): R
   for (const mapping of mappings) {
     if (!mapping.targetField) continue;
     const raw = row[mapping.sourceColumn]?.trim() ?? "";
-
-    if (mapping.targetField === "tags") {
-      mapped.tags = raw ? raw.split(/[,;|]/).map((t) => t.trim()).filter(Boolean) : [];
-    } else {
-      mapped[mapping.targetField] = raw || undefined;
-    }
+    mapped[mapping.targetField] = raw || undefined;
   }
 
   return mapped;
